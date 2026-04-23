@@ -1,28 +1,79 @@
 package co.edu.iumafis.lang3;
 import java.util.ArrayList;
 
+
+
 public class GestorEstudiantes {
 
-    private ArrayList<Estudiante> lista;
+    // ejemplo multiples clases gestor estudiante
+    // Lista interna de objetos Estudiante
+    private ArrayList<Estudiante> lista = new ArrayList<>();
 
-    public GestorEstudiantes() {
-        this.lista = new ArrayList<>();
-    }
-
-    public void agregarEstudiante(Estudiante e) {
+    // ── AGREGAR ────────────────────────────────────────────────────
+    public void agregar(Estudiante e) {
         lista.add(e);
+        System.out.println("✓ Agregado: " + e.getNombre());
     }
 
+    // ── LISTAR TODOS ───────────────────────────────────────────────
     public void listar() {
-        for (int i = 0; i < lista.size(); i++) {
-            System.out.println("  [" + (i+1) + "] " + lista.get(i));
+        if (lista.isEmpty()) {
+            System.out.println("  (lista vacía)");
+            return;
         }
+        System.out.println("Código | Nombre          | Sem | Prom | Estado");
+        System.out.println("─".repeat(55));
+        for (Estudiante e : lista) {
+            System.out.println(e);   // llama a toString() automáticamente
+        }
+        System.out.println("Total: " + lista.size() + " estudiante(s)");
     }
 
-    public Estudiante get(int indice) {
-        return lista.get(indice);
+    // ── BUSCAR POR CÓDIGO ──────────────────────────────────────────
+    public Estudiante buscarPorCodigo(int codigo) {
+        for (Estudiante e : lista) {
+            if (e.getCodigo() == codigo) return e;
+        }
+        return null;   // null = "no encontrado"
     }
 
+    // ── FILTRAR APROBADOS ──────────────────────────────────────────
+    public ArrayList<Estudiante> obtenerAprobados() {
+        ArrayList<Estudiante> resultado = new ArrayList<>();
+        for (Estudiante e : lista) {
+            if (e.getPromedio() >= 3.0 && e.isActivo()) {
+                resultado.add(e);
+            }
+        }
+        return resultado;
+    }
+
+    // ── CALCULAR PROMEDIO GENERAL ──────────────────────────────────
+    public double promedioGeneral() {
+        if (lista.isEmpty()) return 0.0;
+        double suma = 0.0;
+        for (Estudiante e : lista) suma += e.getPromedio();
+        return suma / lista.size();
+    }
+
+    // ── ELIMINAR POR CÓDIGO ────────────────────────────────────────
+    public boolean eliminar(int codigo) {
+        Estudiante encontrado = buscarPorCodigo(codigo);
+        if (encontrado != null) {
+            lista.remove(encontrado);
+            System.out.println("✓ Eliminado: " + encontrado.getNombre());
+            return true;
+        }
+        System.out.println("✗ Código " + codigo + " no encontrado");
+        return false;
+    }
+    
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////
     // Reto 2
     public void reportePorSemestre(int semestre) {
         int    contador = 0;
@@ -45,3 +96,5 @@ public class GestorEstudiantes {
         }
     }
 }
+
+
