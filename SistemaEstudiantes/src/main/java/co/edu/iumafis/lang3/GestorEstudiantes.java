@@ -70,7 +70,9 @@ public class GestorEstudiantes {
     
     
     
-    
+    public int getTotalEstudiantes(){
+        return lista.size();
+    }
     
     
     ////////////////////////////////////////////////////////////////////
