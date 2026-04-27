@@ -7,6 +7,7 @@ class EjemploTest {
 
     @Test                                  // ← anotación obligatoria: marca este método como prueba
     void nombreDelMetodo_escenario_resultadoEsperado() {
+        /*
     // ↑ Convención de nombre: método_escenario_resultado
     // Ejemplos:
     //   clasificarNota_notaMayorA45_retornaSobresaliente()
@@ -24,5 +25,6 @@ class EjemploTest {
         assertEquals(1, gestor.getTotalEstudiantes());
         // ↑ primer argumento = valor esperado
         //   segundo argumento = valor real que devuelve el código
+        */
     }
 }

@@ -11,7 +11,39 @@ public class Main {
         //lauchEjercicio6();      
     
     public static void main(String[] args) {
- 
+        
+        GestorEstudiantes gestor = new GestorEstudiantes();
+        Estudiante e1 = new Estudiante("Ana", 101, 5, 4.5);
+        Estudiante e2 = new Estudiante("Luis", 102, 5, 3.2);
+        gestor.agregar(e1);
+        gestor.agregar(e2);
+
+        // Prueba funciones avanzadas
+        System.out.println("--- Buscando 'an' ---");
+        gestor.buscarNombre("an");
+        gestor.mostrarMaxMin();
+
+        // Prueba múltiples clases
+        Materia java = new Materia("Java", "J1", 4);
+        Inscripcion ins = new Inscripcion(e1, java, 4.8);
+        System.out.println("\n" + ins);
+
+        // Prueba Polimorfismo (Lista de Personas)
+        System.out.println("\n--- Polimorfismo ---");
+        ArrayList<Persona> personas = new ArrayList<>();
+        personas.add(e1); // Estudiante
+        personas.add(new Docente("Prof. Juan", 500)); // Docente
+
+        for (Persona p : personas) {
+            System.out.println(p.toString()); // Llama al toString de cada uno
+        }
+        
+    }
+
+
+ /*
+        
+        
         // Crear gestor y agregar estudiantes 
         GestorEstudiantes gestor = new GestorEstudiantes();
         gestor.agregar(new Estudiante("Ana",    10001, 5, 4.5, true));
@@ -45,8 +77,9 @@ public class Main {
         } else {
             System.out.println("No hay estudiantes");
         }
-    }
+        */
 
+    /*-------------------------------------------------------------------------------*/
         /* --------------------------------------------------------------------------  */
  
    /*  multiples clases main que correo el ejemplo estudiante y gestor

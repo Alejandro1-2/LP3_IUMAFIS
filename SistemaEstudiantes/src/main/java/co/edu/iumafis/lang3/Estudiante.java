@@ -1,7 +1,23 @@
 package co.edu.iumafis.lang3;
-import java.util.ArrayList;
 
-public class Estudiante {
+public class Estudiante extends Persona {
+    int semestre;
+    double promedio;
+
+    public Estudiante(String nombre, int id, int semestre, double promedio) {
+        super(nombre, id);
+        this.semestre = semestre;
+        this.promedio = promedio;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante: " + nombre + " | ID: " + id + " | Prom: " + promedio;
+    }
+}
+
+    
+    /*
     private String nombre;
     private int codigo;
     private int semestre;
@@ -52,8 +68,8 @@ public class Estudiante {
     }
     
     
-    
-}
+    */
+
 
 
 

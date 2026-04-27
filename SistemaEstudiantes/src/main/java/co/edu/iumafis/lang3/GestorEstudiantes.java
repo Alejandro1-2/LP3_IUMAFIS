@@ -1,10 +1,45 @@
 package co.edu.iumafis.lang3;
-import java.util.ArrayList;
-
-
+import java.util.*;
 
 public class GestorEstudiantes {
+    ArrayList<Estudiante> lista = new ArrayList<>();
 
+    public void agregar(Estudiante e) { lista.add(e); }
+
+    // 1. Ordenar por promedio (de mayor a menor)
+    public void ordenarPorPromedio() {
+        lista.sort((e1, e2) -> Double.compare(e2.promedio, e1.promedio));
+    }
+
+    // 2. Nota máxima y mínima
+    public void mostrarMaxMin() {
+        if (lista.isEmpty()) return;
+        Estudiante max = lista.get(0), min = lista.get(0);
+        for (Estudiante e : lista) {
+            if (e.promedio > max.promedio) max = e;
+            if (e.promedio < min.promedio) min = e;
+        }
+        System.out.println("Máximo: " + max.nombre + " (" + max.promedio + ")");
+        System.out.println("Mínimo: " + min.nombre + " (" + min.promedio + ")");
+    }
+
+    // 3. Buscar por nombre parcial
+    public void buscarNombre(String texto) {
+        for (Estudiante e : lista) {
+            if (e.nombre.toLowerCase().contains(texto.toLowerCase())) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    public void listar() {
+        for (Estudiante e : lista) System.out.println(e);
+    }
+}
+
+
+
+    /*
     // ejemplo multiples clases gestor estudiante
     // Lista interna de objetos Estudiante
     private ArrayList<Estudiante> lista = new ArrayList<>();
@@ -97,6 +132,7 @@ public class GestorEstudiantes {
             System.out.println("Promedio grupal: " + promedioGrupal);
         }
     }
-}
+*/
+
 
 

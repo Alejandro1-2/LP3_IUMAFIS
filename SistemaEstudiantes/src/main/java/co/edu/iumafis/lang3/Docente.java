@@ -1,8 +1,18 @@
-
 package co.edu.iumafis.lang3;
-import java.util.ArrayList;
 
-public class Docente {
+public class Docente extends Persona {
+    public Docente(String nombre, int id) {
+        super(nombre, id);
+    }
+
+    @Override
+    public String toString() {
+        return "Docente: " + nombre + " | ID: " + id;
+    }
+}
+
+    
+    /*
     private String nombre;
     private int cedula;
     ArrayList<Estudiante> grupo;
@@ -44,4 +54,6 @@ public class Docente {
         }
         return mejor;
     }
-}
+
+*/
+
